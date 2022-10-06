@@ -7,21 +7,21 @@ import { LoginPageComponent } from "./login-page/login-page.component";
 import { AdminLayoutComponent } from "./shared/components/admin-layout/admin-layout.component";
 
 const routes: Routes = [
-  {
-    path: '',
-    component: AdminLayoutComponent,
-    children: [
-      { path: '', pathMatch: 'full', redirectTo: '/admin/login' },
-      { path: 'login', component: LoginPageComponent },
-      { path: 'dashboard', component: DashboardPageComponent },
-      { path: 'create', component: CreatePageComponent },
-      { path: 'post/:id/edit', component: EditPageComponent }
-    ]
-  }
+    {
+        path: '',
+        component: AdminLayoutComponent,
+        children: [
+            { path: '', pathMatch: 'full', redirectTo: '/admin/login' },
+            { path: 'login', component: LoginPageComponent },
+            { path: 'dashboard', component: DashboardPageComponent },
+            { path: 'create', component: CreatePageComponent },
+            { path: 'post/:id/edit', component: EditPageComponent }
+        ]
+    }
 ];
 
 @NgModule({
-  imports: [RouterModule.forChild(routes)],
-  exports: [RouterModule]
+    imports: [RouterModule.forChild(routes)],
+    exports: [RouterModule]
 })
 export class AdminRoutingModule { }
