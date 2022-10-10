@@ -12,6 +12,7 @@ import { CreatePageComponent } from './create-page/create-page.component';
 import { EditPageComponent } from './edit-page/edit-page.component';
 
 import { AuthService } from "./shared/services/auth.service";
+import { AuthGuard } from "./shared/services/auth.guard";
 
 @NgModule({
     imports: [
@@ -29,6 +30,6 @@ import { AuthService } from "./shared/services/auth.service";
         CreatePageComponent,
         EditPageComponent
     ],
-    providers: [AuthService]
+    providers: [AuthService, AuthGuard]
 })
 export class AdminModule { }

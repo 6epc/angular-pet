@@ -4,6 +4,9 @@
   <div class="alert alert-danger" *ngIf="authService.error$ | async as error">
     {{ error }}
   </div>
+  <div class="alert alert-info" *ngIf="alertMsg">
+    {{alertMsg}}
+  </div>
 
   <div class="form-control" [ngClass]="{invalid: email.invalid && email.touched}">
     <label for="email">Email</label>

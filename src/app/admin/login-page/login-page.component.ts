@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 
 import { User } from 'src/app/shared/interfaces';
 
@@ -14,13 +14,21 @@ import { AuthService } from '../shared/services/auth.service';
 export class LoginPageComponent implements OnInit {
     form!: FormGroup;
     submitted = false;
+    alertMsg!: string;
 
     constructor(
         public authService: AuthService,
-        private router: Router
+        private router: Router,
+        private activatedRoute: ActivatedRoute
     ) { }
 
     ngOnInit(): void {
+        this.activatedRoute.queryParams.subscribe(params => {
+            if (params['loginAgaine']) {
+                this.alertMsg = 'Пожайлуйста, введите данные для авторизации в админ панель'
+            }
+        })
+
         this.form = new FormGroup({
             email: new FormControl('par@mail.ru', [Validators.required, Validators.email]),
             password: new FormControl('111111', [Validators.required, Validators.minLength(3)])
