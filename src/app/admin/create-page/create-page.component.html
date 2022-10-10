@@ -1,1 +1,25 @@
-<p>creat-page works!</p>
+<form [formGroup]="form" (ngSubmit)="submit()">
+
+  <div class="form-control" [ngClass]="{invalid: title.invalid && title.touched}">
+    <label for="title">Заголовок поста:</label>
+    <input type="text" id="title" formControlName="title">
+    <div class="validation" *ngIf="title.invalid && title.touched">
+      <small *ngIf="title.errors?.['required']">Введите название поста</small>
+    </div>
+  </div>
+
+  <div class="form-control">
+    <label>Контент поста:</label>
+    <quill-editor formControlName="text"></quill-editor>
+  </div>
+
+  <div class="form-control" [ngClass]="{invalid: author.invalid && author.touched}">
+    <label for="author">Автор поста:</label>
+    <input type="text" id="author" formControlName="author">
+    <div class="validation" *ngIf="author.invalid && author.touched">
+      <small *ngIf="author.errors?.['required']">Введите автора поста</small>
+    </div>
+  </div>
+
+  <button type="submit" class="btn btn-block btn-dark" [disabled]="form.invalid">Создать пост</button>
+</form>
