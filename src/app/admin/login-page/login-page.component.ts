@@ -25,7 +25,9 @@ export class LoginPageComponent implements OnInit {
     ngOnInit(): void {
         this.activatedRoute.queryParams.subscribe(params => {
             if (params['loginAgaine']) {
-                this.alertMsg = 'Пожайлуйста, введите данные для авторизации в админ панель'
+                this.alertMsg = 'Пожайлуйста, введите данные для авторизации в админ панель.'
+            } else if (params['authFailed']) {
+                this.alertMsg = 'Сессия истеклаю. Введите данные заново.'
             }
         })
 
@@ -51,14 +53,13 @@ export class LoginPageComponent implements OnInit {
         };
 
         this.authService.login(user).subscribe({
-                next: (v) => {
-                    this.form.reset();
-                    this.router.navigate(['/admin', 'dashboard']);
-                    this.submitted = false;
-                },
-                error: () => this.submitted = false
+            next: (v) => {
+                this.form.reset();
+                this.router.navigate(['/admin', 'dashboard']);
+                this.submitted = false;
+            },
+            error: () => this.submitted = false
         })
-
     }
 
 }

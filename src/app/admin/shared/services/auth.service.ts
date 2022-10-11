@@ -5,7 +5,7 @@ import { User } from 'src/app/shared/interfaces';
 import { catchError, Observable, Subject, tap, throwError } from 'rxjs';
 import { environment } from 'src/environments/environment';
 
-@Injectable()
+@Injectable({ providedIn: 'root' })
 export class AuthService {
 
     public error$: Subject<string> = new Subject<string>();
@@ -55,7 +55,7 @@ export class AuthService {
                 break;
         }
 
-        return throwError(error)
+        return throwError(() => error);
     }
 
     private setToken(response: any) {
