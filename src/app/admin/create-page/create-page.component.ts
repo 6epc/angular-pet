@@ -12,7 +12,7 @@ export class CreatePageComponent implements OnInit {
 
     form!: FormGroup;
 
-    constructor(private postsService:PostsService) { }
+    constructor(private postsService: PostsService) { }
 
     ngOnInit(): void {
 
@@ -33,13 +33,11 @@ export class CreatePageComponent implements OnInit {
         }
 
         const post: Post = {
-            title: this.form.value.title,
-            text: this.form.value.text,
-            author: this.form.value.author,
+            ...this.form.value,
             date: new Date()
         }
 
-        this.postsService.creat(post).subscribe(()=> {
+        this.postsService.create(post).subscribe(() => {
             //response is object {id?: string; title: string; text: string; author: string; date: Date;}
             this.form.reset();
         });
