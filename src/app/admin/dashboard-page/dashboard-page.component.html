@@ -17,7 +17,7 @@
         <td>{{i + 1}}</td>
         <td>{{post.author}}</td>
         <td>{{post.title}}</td>
-        <td>{{post.date | date: 'medium'}}</td>
+        <td>{{post.date | date: 'd LLL y, H:mm': undefined : 'ru' }}</td>
         <td>
           <button class="btn btn-link m-r-8" [routerLink]="['/admin', 'post', post.id, 'edit']">Открыть</button>
           <a (click)="remove(post.id!)">Удалить</a>

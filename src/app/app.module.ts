@@ -1,7 +1,9 @@
 import { NgModule, Provider } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { registerLocaleData } from '@angular/common';
 import { HTTP_INTERCEPTORS } from '@angular/common/http'
+import ruLocale from '@angular/common/locales/ru'
 
 import { AppRoutingModule } from './app-routing.module';
 import { SharedModule } from './shared/shared.module';
@@ -19,6 +21,8 @@ const INTERCEPTOR_PROVIDER: Provider = {
     useClass: AuthInterceptor,
     multi: true
 }
+
+registerLocaleData(ruLocale, 'ru');
 
 @NgModule({
     declarations: [
