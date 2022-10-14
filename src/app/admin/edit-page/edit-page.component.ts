@@ -37,12 +37,6 @@ export class EditPageComponent implements OnInit, OnDestroy {
             this.post = post;
             this.formInit(post);
         });
-
-        this.activatedRoute.params.subscribe(params => {
-            this.postsService.getById(params['id']).subscribe((post: Post) => {
-                this.formInit(post);
-            })
-        })
     }
 
     private formInit(post: Post) {
