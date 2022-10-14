@@ -1,1 +1,25 @@
-<p>edit-page works!</p>
+<ng-container *ngIf="form; else loading">
+  <form [formGroup]="form" (ngSubmit)="submit()">
+    <div class="form-control" [ngClass]="{invalid: title.invalid && title.touched}">
+      <label for="title">Заголовок поста:</label>
+      <input type="text" id="title" formControlName="title">
+      <div class="validation" *ngIf="title.invalid && title.touched">
+        <small *ngIf="title.errors?.['required']">Введите название поста</small>
+      </div>
+    </div>
+
+    <div class="form-control">
+      <quill-editor formControlName="text"></quill-editor>
+    </div>
+
+    <button class="btn btn-primary" type="submit" [disabled]="form.invalid || submitted">
+      Сохранить
+    </button>
+  </form>
+</ng-container>
+
+<ng-template #loading>
+  <p class="text-center">Идет загрузка</p>
+</ng-template>
+
+
