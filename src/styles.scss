@@ -79,6 +79,17 @@ img {
     display: flex;
     justify-content: space-between;
     align-items: center;
+
+    h2 {
+      text-overflow: ellipsis;
+      overflow: hidden;
+      white-space: nowrap;
+      padding-right: 16px;
+    }
+
+    small {
+      flex-shrink: 0;
+    }
   }
 
   &-content {
@@ -307,4 +318,11 @@ table th {
 .ql-container {
   max-height: 50vh;
   overflow-y: auto;
+  font-size: 1rem;
+
+  .ql-editor {
+    p, h2, h3, h4 {
+      margin: 1.2rem 0;
+    }
+  }
 }
