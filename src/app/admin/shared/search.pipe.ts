@@ -6,7 +6,7 @@ import { Post } from 'src/app/shared/interfaces';
 })
 
 export class SearchPipe implements PipeTransform {
-    transform(posts: any[], searchStr: string): any[] {
+    transform(posts: Post[], searchStr: string): any[] {
 
         if (!searchStr.trim()) {
             return posts
